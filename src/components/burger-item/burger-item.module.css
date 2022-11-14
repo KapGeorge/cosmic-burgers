@@ -4,7 +4,7 @@
     align-items: center;
     gap: 10px;
 }
-.itemCard{
+.item-card{
     display: flex;
     align-items: center;
     flex-direction: column;

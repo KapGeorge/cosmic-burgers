@@ -1,10 +1,10 @@
-.bottomButtonBlock {
+.bottom-button-block {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.constructor_item_wrap {
+.constructor-item-wrap {
     display: grid;
     grid-template-columns: 0.5fr 9fr;
     gap: 8px;
@@ -12,12 +12,12 @@
 
 }
 
-.constructor_item {
+.constructor-item {
     display: block;
     width: 100%;
 }
 
-.items_list_right {
+.items-list-right {
     overflow-y: scroll;
     height: calc(100vh - 480px);
     display: flex;
@@ -31,12 +31,12 @@
     right: -16px;
 }
 
-.drag_icon {
+.drag-icon {
     display: flex;
     align-items: center;
 }
 
-.constructor-element_pos_bottom,
-.constructor-element_pos_top {
+.constructor-element_pos-bottom,
+.constructor-element_pos-top {
     margin-right: 20px;
 }

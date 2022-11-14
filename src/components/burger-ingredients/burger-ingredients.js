@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {mainPropTypes} from '../../utils/check-props';
 import BurgerItem from '../burger-item/burger-item'
+import Modal from '../modal/modal'
+import ItemDetails from '../burger-ingredient-item/burger-ingredient-item'
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
+import {mainPropTypes} from '../../utils/check-props';
 
-function BurgerIngredients({items}) {
+function BurgerIngredients({
+   items,
+   item,
+   closeItemModal,
+   setItem,
+}) {
 
     const buns = items.filter(items => items['type'] === 'bun');
     const sauce = items.filter(items => items['type'] === 'sauce');
@@ -30,18 +37,39 @@ function BurgerIngredients({items}) {
             <div className="items-list mt-10 ">
                 <h2>Булки</h2>
                 <div className="items-grid">
-                    {buns.map((item, index) => <BurgerItem key={index} item={item}/>)}
+                    {buns.map((item, index) =>
+                        <BurgerItem
+                            key={index}
+                            setItem={setItem}
+                            item={item}/>
+                        )}
                 </div>
 
                 <h2>Соусы</h2>
                 <div className="items-grid">
-                    {sauce.map((item, index) => <BurgerItem key={index} item={item}/>)}
+                    {sauce.map((item, index) =>
+                        <BurgerItem
+                            key={index}
+                            setItem={setItem}
+                            item={item}/>
+                            )}
                 </div>
                 <h2>Начинки</h2>
                 <div className="items-grid mb-6 ">
-                    {main.map((item, index) => <BurgerItem key={index} item={item}/>)}
+                    {main.map((item, index) =>
+                        <BurgerItem
+                            key={index}
+                            setItem={setItem}
+                            item={item}/>
+                            )}
                 </div>
             </div>
+            {
+                item &&
+                <Modal onClose={closeItemModal} title={"Детали ингредиента"}>
+                    <ItemDetails item={item} />
+                </Modal>
+            }
         </>
     );
 }
@@ -50,6 +78,9 @@ BurgerIngredients.propTypes = {
     items: PropTypes.arrayOf(
         mainPropTypes.isRequired
     ).isRequired,
+    item: PropTypes.object,
+    setItem: PropTypes.func,
+    closeItemModal: PropTypes.func,
 
 };
 

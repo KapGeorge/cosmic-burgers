@@ -12,7 +12,19 @@ function App() {
     const [items, setItems] = useState([]);
     const [item, setItem] = useState(null);
     const url = 'https://norma.nomoreparties.space/api';
+    const [isOrderDetailsModal, setIsOrderDetailsModal] = useState(false);
 
+    function openModal() {
+        setIsOrderDetailsModal(true);
+    }
+
+    function closeOrderModal() {
+        setIsOrderDetailsModal(false);
+    }
+
+    function closeItemModal() {
+        setItem(null);
+    }
 
     useEffect(() => {
         fetch(`${url}/ingredients`)
@@ -39,7 +51,12 @@ function App() {
                     {!isLoaded &&
                     !error &&
                     !!items.length &&
-                    <BurgerIngredients items={items}/>}
+                    <BurgerIngredients
+                        items={items}
+                        item={item}
+                        closeItemModal={closeItemModal}
+                        setItem={setItem}
+                     />}
                 </div>
                 <div className="content-block">
                     {isLoaded && 'Загрузка...'}
@@ -47,11 +64,16 @@ function App() {
                     {!isLoaded &&
                     !error &&
                     !!items.length &&
-                    <BurgerConstructor items={items}/>}
+                    <BurgerConstructor
+                        items={items}
+                        openModal={openModal}
+                        isOrderDetailsModal={isOrderDetailsModal}
+                        closeOrderModal={closeOrderModal}
+                    />}
 
                 </div>
-
             </section>
+            <div id='modal' />
         </div>
     );
 }
