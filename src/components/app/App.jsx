@@ -5,14 +5,13 @@ import AppHeader from '../app-header/app-header'
 import BurgerIngredients from '../burger-ingredients/burger-ingredients'
 import BurgerConstructor from '../burger-constructor/burger-constructor'
 import {getIngredients} from '../../utils/API-connect';
-
+export const modalPlace = document.querySelector('#modal');
 
 function App() {
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
     const [item, setItem] = useState(null);
-
     const [isOrderDetailsModal, setIsOrderDetailsModal] = useState(false);
 
     function openModal() {
