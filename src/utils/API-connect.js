@@ -7,7 +7,7 @@ function checkResponse(res) {
 
     return res.json()
         .then((err) => { throw new Error(err) })
-    console.log('eee')
+
 };
 
 export function getIngredients() {

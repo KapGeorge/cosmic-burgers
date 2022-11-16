@@ -18,24 +18,30 @@ function BurgerIngredients({
     const main = items.filter(items => items.type  === 'main');
     const [current, setCurrent] = React.useState('bun')
 
+    const setTab = (tab) => {
+        setCurrent(tab);
+        const element = document.querySelector(`#${tab}`);
+
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+    };
     return (
         <>
             <h2 className="text text_type_main-large  pb-5 pt-10">
                 Соберите бургер
             </h2>
             <div className={'d-flex'}>
-                <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
+                <Tab value="bun" active={current === 'bun'} onClick={setTab}>
                     Булки
                 </Tab>
-                <Tab value="sauce" active={current === 'sauce'} onClick={setCurrent}>
+                <Tab value="sauce" active={current === 'sauce'} onClick={setTab}>
                     Соусы
                 </Tab>
-                <Tab value="main" active={current === 'main'} onClick={setCurrent}>
+                <Tab value="main" active={current === 'main'} onClick={setTab}>
                     Начинки
                 </Tab>
             </div>
             <div className="items-list mt-10 ">
-                <h2>Булки</h2>
+                <h2 id="bun">Булки</h2>
                 <div className="items-grid">
                     {buns.map((item, index) =>
                         <BurgerItem
@@ -45,7 +51,7 @@ function BurgerIngredients({
                         )}
                 </div>
 
-                <h2>Соусы</h2>
+                <h2 id="sauce">Соусы</h2>
                 <div className="items-grid">
                     {sauce.map((item, index) =>
                         <BurgerItem
@@ -54,7 +60,7 @@ function BurgerIngredients({
                             item={item}/>
                             )}
                 </div>
-                <h2>Начинки</h2>
+                <h2 id="main">Начинки</h2>
                 <div className="items-grid mb-6 ">
                     {main.map((item, index) =>
                         <BurgerItem

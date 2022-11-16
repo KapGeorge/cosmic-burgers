@@ -8,7 +8,7 @@ import {getIngredients} from '../../utils/API-connect';
 
 
 function App() {
-    const [error, setError] = useState(null);
+
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
     const [item, setItem] = useState(null);
@@ -40,14 +40,12 @@ function App() {
             {
                 !items.length
                     ?
-                    <div className="error-items">Произошла ошбка</div>
+                    <div className="error-items">Загрузка ингредиентов</div>
                     :
             <section className="container">
                 <div className="content-block mr-10">
                     {isLoaded && 'Загрузка...'}
-
                     {!isLoaded &&
-                    !error &&
                     !!items.length &&
                     <BurgerIngredients
                         items={items}
@@ -58,9 +56,7 @@ function App() {
                 </div>
                 <div className="content-block">
                     {isLoaded && 'Загрузка...'}
-
                     {!isLoaded &&
-                    !error &&
                     !!items.length &&
                     <BurgerConstructor
                         items={items}
