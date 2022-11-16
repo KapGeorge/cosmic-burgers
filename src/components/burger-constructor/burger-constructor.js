@@ -12,41 +12,40 @@ function BurgerConstructor({
    closeOrderModal,}) {
     const orderId = 11111;
 
-
-    const bun = {
-        name: 'Краторная булка N-200i',
-        price: '1255',
-        image: 'https://code.s3.yandex.net/react/code/bun-02.png'
-    }
+    const bun = items.find(
+        (bun) => bun.type === 'bun'
+    );
+    const ingredients = items.filter(
+        (ingredient) => ingredient.type !== 'bun'
+    );
 
 
     return (
         <>
-            <div style={{display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'flex-end'}}
-                 className="pt-25">
-                <div style={{display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'flex-end'}}>
+            <div className={`${BurgerConstructorStyles['constructor-wrap']} pt-25`}>
+                <div className={`${BurgerConstructorStyles['constructor-wrap']}`}>
                     <ConstructorElement
                         type="top"
                         isLocked={true}
-                        text={bun.name}
+                        text={bun.name + ' (верх)'}
                         price={bun.price}
                         thumbnail={bun.image}
 
                     />
 
                     <ul className={`${BurgerConstructorStyles['items-list-right']}`}>
-                        {items.map((item, index) => {
+                        {ingredients.map((ingredient) => {
                             return (
-                                <li key={index} className={`${BurgerConstructorStyles['constructor-item-wrap']}`}>
+                                <li key={ingredient._id} className={`${BurgerConstructorStyles['constructor-item-wrap']}`}>
                                     <div className={`${BurgerConstructorStyles['drag-icon']}`}>
                                         <DragIcon/>
                                     </div>
 
                                     <div className={`${BurgerConstructorStyles['constructor-item']}`}>
                                         <ConstructorElement
-                                            text={item.name}
-                                            price={item.price}
-                                            thumbnail={item.image}
+                                            text={ingredient.name}
+                                            price={ingredient.price}
+                                            thumbnail={ingredient.image}
 
                                         />
                                     </div>
@@ -59,7 +58,7 @@ function BurgerConstructor({
                     <ConstructorElement
                         type="bottom"
                         isLocked={true}
-                        text={bun.name}
+                        text={bun.name + ' (низ)'}
                         price={bun.price}
                         thumbnail={bun.image}
 
@@ -86,8 +85,8 @@ BurgerConstructor.propTypes = {
         mainPropTypes.isRequired
     ).isRequired,
     openOrderDetails: PropTypes.func,
-    isOrderDetailsModal: PropTypes.bool,
-    closeOrderModal: PropTypes.func,
+    isOrderDetailsModal: PropTypes.bool.isRequired,
+    closeOrderModal: PropTypes.func.isRequired,
 
 };
 

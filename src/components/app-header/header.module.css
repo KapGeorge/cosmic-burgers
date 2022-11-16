@@ -27,13 +27,27 @@ header{
     gap: 8px;
     cursor: pointer;
     transition: 0.5s;
+    color: white;
+    text-decoration: none;
 }
+.navigation-element-right{
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.5s;
+    color: white;
+    text-decoration: none;
+}
+.navigation-element-right svg,
 .navigation-element svg{
     transition: 0.5s;
 }
+.navigation-element-right:hover,
 .navigation-element:hover{
     color: var(--text-inactive-color);
 }
+.navigation-element-right:hover svg,
 .navigation-element:hover svg{
     fill: var(--text-inactive-color);
 }

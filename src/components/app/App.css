@@ -25,7 +25,9 @@ body {
 .ml-a {
     margin-left: auto;
 }
-
+.d-flex{
+    display: flex;
+}
 .items-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -35,7 +37,13 @@ body {
     overflow-y: scroll;
     height: calc(100vh - 300px);
 }
-
+.error-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 40px;
+}
 
 ::-webkit-scrollbar {
     width: 8px;

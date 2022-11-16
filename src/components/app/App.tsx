@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
 import {useState, useEffect} from 'react';
-import AppHeader from './components/app-header/app-header'
-import BurgerIngredients from './components/burger-ingredients/burger-ingredients'
-import BurgerConstructor from './components/burger-constructor/burger-constructor'
+import AppHeader from '../app-header/app-header'
+import BurgerIngredients from '../burger-ingredients/burger-ingredients'
+import BurgerConstructor from '../burger-constructor/burger-constructor'
+import {getIngredients} from '../../utils/API-connect';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
     const [item, setItem] = useState(null);
-    const url = 'https://norma.nomoreparties.space/api';
+
     const [isOrderDetailsModal, setIsOrderDetailsModal] = useState(false);
 
     function openModal() {
@@ -27,27 +28,24 @@ function App() {
     }
 
     useEffect(() => {
-        fetch(`${url}/ingredients`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(false);
-                    setItems(result['data']);
-                },
-                (error) => {
-                    setIsLoaded(false);
-                    setError(error);
-                }
-            )
+        getIngredients()
+            .then((res) => setItems(res.data))
+                .catch((err) => console.log(err))
+                .finally(() => setIsLoaded(false))
     }, [])
 
     return (
         <div className="App">
             <AppHeader/>
+            {
+                !items.length
+                    ?
+                    <div className="error-items">Произошла ошбка</div>
+                    :
             <section className="container">
                 <div className="content-block mr-10">
                     {isLoaded && 'Загрузка...'}
-                    {error && 'Произошла ошибка'}
+
                     {!isLoaded &&
                     !error &&
                     !!items.length &&
@@ -56,11 +54,11 @@ function App() {
                         item={item}
                         closeItemModal={closeItemModal}
                         setItem={setItem}
-                     />}
+                    />}
                 </div>
                 <div className="content-block">
                     {isLoaded && 'Загрузка...'}
-                    {error && 'Произошла ошибка'}
+
                     {!isLoaded &&
                     !error &&
                     !!items.length &&
@@ -73,7 +71,7 @@ function App() {
 
                 </div>
             </section>
-            <div id='modal' />
+            }
         </div>
     );
 }

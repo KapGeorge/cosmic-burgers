@@ -9,11 +9,11 @@ function AppHeader() {
             <div className={`${headerStyles['header']}`}>
                 <nav>
                     <ul className={`${headerStyles['navigation-panel']} pb-4 pt-4`}>
-                        <li className={`${headerStyles['navigation-element']} pl-5 pr-5 pb-4 pt-4`}>
-                            <BurgerIcon type="primary"/> Конструктор
+                        <li className={` pl-5 pr-5 pb-4 pt-4`}>
+                            <a href="#" className={`${headerStyles['navigation-element']}`} ><BurgerIcon type="primary"/> Конструктор</a>
                         </li>
                         <li className={`${headerStyles['navigation-element']} pl-5 pr-5 pb-4 pt-4`}>
-                            <ListIcon type="primary"/> Лента заказов
+                            <a href="#" className={`${headerStyles['navigation-element']}`} ><ListIcon type="primary"/> Лента заказов</a>
                         </li>
                     </ul>
                 </nav>
@@ -23,8 +23,8 @@ function AppHeader() {
 
                 <nav>
                     <ul className={`${headerStyles['navigation-panel']} pb-4 pt-4`}>
-                        <li className={`${headerStyles['navigation-element-right']} mr-0 ml-a`}>
-                            <ProfileIcon type="primary"/> Личный кабинет
+                        <li className={`  mr-0 ml-a`}>
+                            <a href="#" className={`${headerStyles['navigation-element-right']}`} ><ProfileIcon type="primary"/> Личный кабинет</a>
                         </li>
                     </ul>
                 </nav>

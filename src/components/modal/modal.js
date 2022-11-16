@@ -5,16 +5,18 @@ import {ModalOverlay} from '../modal-overlay/modal-overlay';
 import {useEffect} from 'react';
 import {createPortal} from 'react-dom';
 
+const modalPlace = document.querySelector('#modal');
 export default function Modal({children, title = '', onClose}) {
-    const modalPlace = document.querySelector('#modal');
 
-    function closeModalEsc(e) {
-        if (e.key === 'Escape') onClose();
-    };
+
+
 
     useEffect(() => {
         document.addEventListener('keydown', closeModalEsc);
         return () => document.removeEventListener('keydown', closeModalEsc);
+        function closeModalEsc(e) {
+            if (e.key === 'Escape') onClose();
+        };
     }, []);
 
     return createPortal(
@@ -38,6 +40,6 @@ export default function Modal({children, title = '', onClose}) {
 
 Modal.propTypes = {
     children: PropTypes.element.isRequired,
-    title: PropTypes.string,
-    onClose: PropTypes.func,
+    title: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired,
 };

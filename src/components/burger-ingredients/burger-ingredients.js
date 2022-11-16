@@ -13,9 +13,9 @@ function BurgerIngredients({
    setItem,
 }) {
 
-    const buns = items.filter(items => items['type'] === 'bun');
-    const sauce = items.filter(items => items['type'] === 'sauce');
-    const main = items.filter(items => items['type'] === 'main');
+    const buns = items.filter(items => items.type === 'bun');
+    const sauce = items.filter(items => items.type  === 'sauce');
+    const main = items.filter(items => items.type  === 'main');
     const [current, setCurrent] = React.useState('bun')
 
     return (
@@ -23,7 +23,7 @@ function BurgerIngredients({
             <h2 className="text text_type_main-large  pb-5 pt-10">
                 Соберите бургер
             </h2>
-            <div style={{display: 'flex'}}>
+            <div className={'d-flex'}>
                 <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
                     Булки
                 </Tab>
@@ -78,9 +78,8 @@ BurgerIngredients.propTypes = {
     items: PropTypes.arrayOf(
         mainPropTypes.isRequired
     ).isRequired,
-    item: PropTypes.object,
-    setItem: PropTypes.func,
-    closeItemModal: PropTypes.func,
+    setItem: PropTypes.func.isRequired,
+    closeItemModal: PropTypes.func.isRequired,
 
 };
 
