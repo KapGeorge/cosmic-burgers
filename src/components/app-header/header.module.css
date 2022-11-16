@@ -27,7 +27,7 @@ header{
     gap: 8px;
     cursor: pointer;
     transition: 0.5s;
-    color: white;
+    color: var(--text-inactive-color);
     text-decoration: none;
 }
 .navigation-element-right{
@@ -36,18 +36,29 @@ header{
     gap: 8px;
     cursor: pointer;
     transition: 0.5s;
-    color: white;
+    color: var(--text-inactive-color);
     text-decoration: none;
 }
 .navigation-element-right svg,
 .navigation-element svg{
     transition: 0.5s;
 }
+
+.navigation-element-right  svg,
+.navigation-element  svg{
+    fill: var(--text-inactive-color);
+}
+
 .navigation-element-right:hover,
 .navigation-element:hover{
-    color: var(--text-inactive-color);
+    color: white;
 }
-.navigation-element-right:hover svg,
-.navigation-element:hover svg{
-    fill: var(--text-inactive-color);
+.navigation-element.active svg,
+.navigation-element-right.active svg,
+li:hover .navigation-element-right svg,
+li:hover .navigation-element  svg{
+    fill: #fff;
+}
+.active{
+    color: white;
 }
