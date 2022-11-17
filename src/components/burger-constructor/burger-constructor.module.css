@@ -1,0 +1,47 @@
+.bottom-button-block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.constructor-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+.constructor-item-wrap {
+    display: grid;
+    grid-template-columns: 0.5fr 9fr;
+    gap: 8px;
+    margin-right: 8px;
+
+}
+
+.constructor-item {
+    display: block;
+    width: 100%;
+}
+
+.items-list-right {
+    overflow-y: scroll;
+    height: calc(100vh - 480px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    right: -16px;
+}
+
+.drag-icon {
+    display: flex;
+    align-items: center;
+}
+
+.constructor-element_pos-bottom,
+.constructor-element_pos-top {
+    margin-right: 20px;
+}

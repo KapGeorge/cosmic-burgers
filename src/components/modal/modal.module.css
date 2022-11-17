@@ -1,0 +1,38 @@
+.modal {
+    position: fixed;
+    width: 100%;
+    max-width: 720px;
+    min-height: 540px;
+    box-sizing: border-box;
+    top: 50%;
+    left: 50%;
+    background: var(--background);
+    border: 1px solid rgba(76, 76, 255, 0.2);
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: var(--common-border-radius-s);
+    z-index: 25;
+}
+
+.header {
+    min-height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close {
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.close:hover {
+    transform: scale(1.1);
+}
+
+.title {
+    margin: 0;
+}
