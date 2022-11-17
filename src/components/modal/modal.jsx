@@ -16,8 +16,8 @@ export default function Modal({children, title = '', onClose}) {
 
 		function closeModalEsc(e) {
 			if(e.key === 'Escape') onClose();
-		}
-	});
+		}// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[]);
 
 	return createPortal(
 		<>
